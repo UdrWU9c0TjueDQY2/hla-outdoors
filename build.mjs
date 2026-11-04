@@ -83,7 +83,7 @@ if (PREFIX) {
     if (!/\.(html|css|xml|webmanifest)$/.test(file) || !fs.statSync(file).isFile()) continue;
     let html = fs.readFileSync(file, 'utf8');
     html = html.replace(/https:\/\/[a-z0-9-]+\.pages\.dev(?=[\/"'<\s])/g, BASE) // pages written for a pages.dev base: point canonicals at this host
-      .replace(/(href|src|content|action|data-src)="\/(?!\/)/g, `$1="${PREFIX}/`).replace(/url\(\/(?!\/)/g, `url(${PREFIX}/`).replace(/srcset="([^"]*)"/g, (m, v) => `srcset="${v.replace(/(^|,\s*)\//g, `$1${PREFIX}/`)}"`);
+      .replace(/(href|src|content|action|data-src)="(\/(?!\/)[^"]*)"/g, (m, attr, url) => `${attr}="${url === PREFIX || url.startsWith(PREFIX + "/") ? url : PREFIX + url}"`).replace(/url\(\/(?!\/)/g, `url(${PREFIX}/`).replace(/srcset="([^"]*)"/g, (m, v) => `srcset="${v.replace(/(^|,\s*)\//g, `$1${PREFIX}/`)}"`);
     fs.writeFileSync(file, html);
   }
 }
