@@ -1,0 +1,109 @@
+{
+ "appId": 6806044403,
+ "name": "Asterfold: Sunset Planner",
+ "url": "https://apps.apple.com/us/app/asterfold-sunset-planner/id6806044403",
+ "genre": "Weather",
+ "icon": [
+  {
+   "file": "icon-128.webp",
+   "w": 128,
+   "h": 128
+  },
+  {
+   "file": "icon-256.webp",
+   "w": 256,
+   "h": 256
+  },
+  {
+   "file": "icon-512.webp",
+   "w": 512,
+   "h": 512
+  }
+ ],
+ "screens": [
+  [
+   {
+    "file": "screen-1-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-1-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ],
+  [
+   {
+    "file": "screen-2-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-2-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ],
+  [
+   {
+    "file": "screen-3-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-3-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ],
+  [
+   {
+    "file": "screen-4-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-4-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ],
+  [
+   {
+    "file": "screen-5-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-5-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ],
+  [
+   {
+    "file": "screen-6-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-6-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ],
+  [
+   {
+    "file": "screen-7-390.webp",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "file": "screen-7-780.webp",
+    "w": 780,
+    "h": 1688
+   }
+  ]
+ ]
+}
