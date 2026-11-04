@@ -3,7 +3,7 @@
 // robots.txt (unless src has one) and the IndexNow key file.
 import fs from 'node:fs';
 import path from 'node:path';
-
+ 
 const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
@@ -11,10 +11,10 @@ const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.json'), 'utf8'));
 const BASE = site.baseUrl.replace(/\/$/, '');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const warn = m => console.log('WARN', m);
-
+ 
 fs.rmSync(DIST, { recursive: true, force: true });
 fs.cpSync(SRC, DIST, { recursive: true });
-
+ 
 // collect pages from meta.json files
 const pages = [];
 (function walk(dir) {
@@ -37,12 +37,12 @@ const pages = [];
 })(SRC);
 pages.sort((a, b) => String(b.published || '').localeCompare(String(a.published || '')));
 for (const p of fs.readdirSync(DIST, { recursive: true })) if (String(p).endsWith('meta.json')) fs.rmSync(path.join(DIST, String(p)));
-
+ 
 const list = (items, cls = 'hla-links') => items.length
   ? `<ul class="${cls}">` + items.map(p => `<li><a href="${p.path}">${esc(p.linkText || p.title)}</a>${p.description ? `<span>${esc(p.description)}</span>` : ''}</li>`).join('') + '</ul>'
   : '';
 const appName = slug => (site.apps.find(a => a.slug === slug) || {}).name || slug;
-
+ 
 function related(me, n = 4) {
   const scored = pages.filter(p => p.path !== me.path).map(p => {
     let s = 0;
@@ -55,7 +55,7 @@ function related(me, n = 4) {
   for (const p of pages) { if (out.length >= n) break; if (p.path !== me.path && !out.includes(p)) out.push(p); }
   return out;
 }
-
+ 
 // fill placeholders in every html file
 let filled = 0;
 for (const f of fs.readdirSync(DIST, { recursive: true })) {
@@ -74,7 +74,7 @@ for (const f of fs.readdirSync(DIST, { recursive: true })) {
   fs.writeFileSync(file, html);
   filled++;
 }
-
+ 
 // sitemap, feed, index, robots, indexnow key
 const staticUrls = ['/', '/about/', '/privacy/'].filter(u => fs.existsSync(path.join(SRC, u, 'index.html')));
 const today = new Date().toISOString().slice(0, 10);

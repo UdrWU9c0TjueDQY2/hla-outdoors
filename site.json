@@ -1,8 +1,8 @@
 {
  "name": "Golden Hour Planner",
- "tagline": "Sunset times, golden hour and blue hour planning for photographers, hikers and date nights.",
- "baseUrl": "https://sunset-planner-tools.pages.dev",
- "indexNowKey": "721c14a25d6d20ea3196119dcf86e911",
+ "tagline": "Know when and where tonight's sunset happens",
+ "baseUrl": "https://golden-hour-planner.pages.dev",
+ "indexNowKey": "085bab1c487691073f9456cb070de8e3",
  "apps": [
   {
    "slug": "asterfold",
