@@ -1,5 +1,21 @@
 [
  {
+  "title": "Compass Bearing to Direction: Visual Degrees Practice for Sunset Planning",
+  "description": "Turn a bearing in degrees into an eight-point compass direction. Explore north, east, south and west on a labelled dial before reading a sunset bearing.",
+  "appSlug": "asterfold",
+  "strategy": "useful interactive tool with worked example and contextual app conversion",
+  "query": "Compass Bearing to Direction: Visual Degrees Practice for Sunset Planning",
+  "tags": [
+   "asterfold",
+   "bearing",
+   "interactive tool"
+  ],
+  "path": "/asterfold/compass-bearing-direction-lab/",
+  "url": "https://udrwu9c0tjuedqy2.github.io/hla-outdoors/asterfold/compass-bearing-direction-lab/",
+  "published": "2026-11-04",
+  "updated": "2026-11-04"
+ },
+ {
   "title": "How to Find Where the Sun Sets From Your Window: 3 Methods",
   "description": "How to find where the sun sets from a window or balcony: three taps pick a method (watch and mark, compass rule, or a sunset planner) and give a bearing.",
   "appSlug": "asterfold",
