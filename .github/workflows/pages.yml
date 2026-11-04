@@ -1,0 +1,28 @@
+# Builds the hub with build.mjs and publishes dist/ to the gh-pages branch (GitHub Pages).
+# Any commit to main that touches the site rebuilds everything already in src/, so pages are never erased.
+name: build-and-deploy
+on:
+  push:
+    branches: [main]
+    paths: ['src/**', 'site.json', 'build.mjs', '.github/workflows/pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node build.mjs
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
+          commit_message: 'deploy from'
