@@ -9,6 +9,9 @@ const SRC = path.join(ROOT, 'src');
 const DIST = path.join(ROOT, 'dist');
 const site = JSON.parse(fs.readFileSync(path.join(ROOT, 'site.json'), 'utf8'));
 const BASE = site.baseUrl.replace(/\/$/, '');
+// HLA patch (hla-0d020d): when the site lives under a path prefix (GitHub Pages project sites), rewrite root-relative URLs.
+const PREFIX = new URL(BASE).pathname.replace(/\/$/, '');
+const pre = p => PREFIX + p;
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const warn = m => console.log('WARN', m);
  
@@ -39,7 +42,7 @@ pages.sort((a, b) => String(b.published || '').localeCompare(String(a.published 
 for (const p of fs.readdirSync(DIST, { recursive: true })) if (String(p).endsWith('meta.json')) fs.rmSync(path.join(DIST, String(p)));
  
 const list = (items, cls = 'hla-links') => items.length
-  ? `<ul class="${cls}">` + items.map(p => `<li><a href="${p.path}">${esc(p.linkText || p.title)}</a>${p.description ? `<span>${esc(p.description)}</span>` : ''}</li>`).join('') + '</ul>'
+  ? `<ul class="${cls}">` + items.map(p => `<li><a href="${pre(p.path)}">${esc(p.linkText || p.title)}</a>${p.description ? `<span>${esc(p.description)}</span>` : ''}</li>`).join('') + '</ul>'
   : '';
 const appName = slug => (site.apps.find(a => a.slug === slug) || {}).name || slug;
  
@@ -73,6 +76,15 @@ for (const f of fs.readdirSync(DIST, { recursive: true })) {
     .replace(/<!--HLA:YEAR-->/g, String(new Date().getUTCFullYear()));
   fs.writeFileSync(file, html);
   filled++;
+}
+if (PREFIX) {
+  for (const f of fs.readdirSync(DIST, { recursive: true })) {
+    const file = path.join(DIST, String(f));
+    if (!/\.(html|css|xml|webmanifest)$/.test(file) || !fs.statSync(file).isFile()) continue;
+    let html = fs.readFileSync(file, 'utf8');
+    html = html.replace(/(href|src|content|action|data-src)="\/(?!\/)/g, `$1="${PREFIX}/`).replace(/url\(\/(?!\/)/g, `url(${PREFIX}/`).replace(/srcset="([^"]*)"/g, (m, v) => `srcset="${v.replace(/(^|,\s*)\//g, `$1${PREFIX}/`)}"`);
+    fs.writeFileSync(file, html);
+  }
 }
  
 // sitemap, feed, index, robots, indexnow key
