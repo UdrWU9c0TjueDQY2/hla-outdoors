@@ -72,7 +72,7 @@ for (const f of fs.readdirSync(DIST, { recursive: true })) {
     .replace(/<!--HLA:RELATED(?::(\d+))?-->/g, (_, n) => list(related(me, Number(n) || 4)))
     .replace(/<!--HLA:LATEST(?::(\d+))?-->/g, (_, n) => list(pages.filter(p => p.path !== me.path).slice(0, Number(n) || 8)))
     .replace(/<!--HLA:APP:([a-z0-9-]+)(?::(\d+))?-->/g, (_, slug, n) => list(pages.filter(p => p.appSlug === slug && p.strategy !== 'app-home' && p.path !== me.path).slice(0, Number(n) || 50)))
-    .replace(/<!--HLA:HUB-APPS-->/g, () => list(site.apps.map(a => pages.find(p => p.appSlug === a.slug && p.strategy === 'app-home')).filter(Boolean).map(p => ({ ...p, linkText: appName(p.appSlug) })), 'hla-apps'))
+    .replace(/<!--HLA:HUB-APPS-->/g, () => '<ul class="hla-apps">' + site.apps.map(a => { const home = pages.find(p => p.appSlug === a.slug && p.strategy === 'app-home'); const n = pages.filter(p => p.appSlug === a.slug && p.strategy !== 'app-home').length; const href = home ? pre(home.path) : `https://apps.apple.com/app/id${a.id}?ct=${(site.name || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 20)}-hub&mt=8`; const desc = home ? esc(home.description || '') : `Free on iPhone${n ? ` · ${n} page${n > 1 ? 's' : ''} on this site` : ''}`; return `<li><a href="${href}"${home ? '' : ' rel="noopener"'}>${esc(a.name)}</a><span>${desc}</span></li>`; }).join('') + '</ul>')
     .replace(/<!--HLA:YEAR-->/g, String(new Date().getUTCFullYear()));
   fs.writeFileSync(file, html);
   filled++;
@@ -82,7 +82,8 @@ if (PREFIX) {
     const file = path.join(DIST, String(f));
     if (!/\.(html|css|xml|webmanifest)$/.test(file) || !fs.statSync(file).isFile()) continue;
     let html = fs.readFileSync(file, 'utf8');
-    html = html.replace(/(href|src|content|action|data-src)="\/(?!\/)/g, `$1="${PREFIX}/`).replace(/url\(\/(?!\/)/g, `url(${PREFIX}/`).replace(/srcset="([^"]*)"/g, (m, v) => `srcset="${v.replace(/(^|,\s*)\//g, `$1${PREFIX}/`)}"`);
+    html = html.replace(/https:\/\/[a-z0-9-]+\.pages\.dev(?=[\/"'<\s])/g, BASE) // pages written for a pages.dev base: point canonicals at this host
+      .replace(/(href|src|content|action|data-src)="\/(?!\/)/g, `$1="${PREFIX}/`).replace(/url\(\/(?!\/)/g, `url(${PREFIX}/`).replace(/srcset="([^"]*)"/g, (m, v) => `srcset="${v.replace(/(^|,\s*)\//g, `$1${PREFIX}/`)}"`);
     fs.writeFileSync(file, html);
   }
 }
