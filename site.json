@@ -1,0 +1,13 @@
+{
+ "name": "Golden Hour Planner",
+ "tagline": "Sunset times, golden hour and blue hour planning for photographers, hikers and date nights.",
+ "baseUrl": "https://sunset-planner-tools.pages.dev",
+ "indexNowKey": "721c14a25d6d20ea3196119dcf86e911",
+ "apps": [
+  {
+   "slug": "asterfold",
+   "name": "Asterfold: Sunset Planner",
+   "id": 6806044403
+  }
+ ]
+}
