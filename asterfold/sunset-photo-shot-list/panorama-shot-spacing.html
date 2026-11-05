@@ -8,7 +8,7 @@
 <label>One photo’s horizontal coverage (5–160°)<input id="field" type="number" value="60" min="5" max="160" step="1"></label>
 <label>Minimum angular overlap (0–90%)<input id="overlap" type="number" value="50" min="0" max="90" step="1"></label>
 </div><button id="reset" type="button">Restore example</button></section>
-<section class="answer" aria-labelledby="count"><div role="status"><h2 id="count"></h2><p id="detail"></p></div><div id="list"><label for="bearings">Camera center bearings in shooting order</label><textarea id="bearings" rows="3" readonly></textarea></div></section>
+<section class="answer" aria-labelledby="count"><div role="status"><h2 id="count"></h2><p id="detail"></p></div><div id="list"><label for="bearings">Camera center bearings in shooting order</label><textarea id="bearings" rows="3" readonly></textarea><button type="button" id="save-plan">Download shooting notes</button></div></section>
 <h2>How the spacing works</h2><p>The largest turn between photos is one frame’s angular width multiplied by the fraction you leave uncovered by the previous frame. For a partial arc, the first and last frames cover the edges and the centers are equally spaced. For 360°, the last frame overlaps the first at the same spacing.</p><p class="fine">Bearings run clockwise from north and are rounded to the nearest tenth of a degree. This is an angular plan. Lens distortion, nearby objects, camera movement and cropping can change the usable overlap when stitching.</p>
 <footer><h2>Plan the sunset viewpoint</h2><p>Asterfold helps you aim a viewpoint, plan an evening and record what you saw.</p><a class="cta" href="https://apps.apple.com/us/app/asterfold-sunset-planner/id6806044403">See Asterfold on the App Store</a><p class="fine">Browser calculator by Honest Little Apps.</p></footer>
 <script>
@@ -30,5 +30,17 @@ function update(){
   'Turn '+rounded(step)+'° clockwise per frame. Angular overlap: '+rounded(100*(1-step/field))+'%.'+(arc===360?' The final turn closes the circle.':'');
  el('bearings').value=bearings.map(value=>value+'°').join(' → ');el('list').hidden=false;
 }
+function savePlan(filename,text){
+ const url=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));
+ const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+el('save-plan').onclick=()=>{
+ update();if(el('list').hidden)return;
+ const [left,arc,field,overlap]=fields.map(f=>f.value);
+ const positions=el('bearings').value.split(' → ');
+ const text=['PANORAMA SHOOTING NOTES','Left edge: '+left+'° clockwise from north','Scene: '+arc+'°; frame coverage: '+field+'°; minimum angular overlap: '+overlap+'%',el('count').textContent,el('detail').textContent,'',...positions.map((bearing,i)=>'Shot '+(i+1)+' — center '+bearing),'','Verify usable overlap in the field.'].join('\n');
+ savePlan('panorama-shooting-notes.txt',text);
+};
 fields.forEach(f=>f.addEventListener('input',update));el('reset').onclick=()=>{fields.forEach(f=>{f.value=f.defaultValue;});update();};update();
 </script></main></body></html>
