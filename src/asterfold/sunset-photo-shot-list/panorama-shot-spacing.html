@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>Panorama shot spacing and bearings | Asterfold</title><meta name="description" content="Calculate how many panorama frames cover a horizontal arc and get a clockwise list of camera bearings, including the join on a full circle."><link rel="canonical" href="https://udrwu9c0tjuedqy2.github.io/hla-outdoors/asterfold/sunset-photo-shot-list/panorama-shot-spacing.html">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f0e6;color:#262c39;font:17px/1.55 system-ui,sans-serif}main{max-width:820px;margin:auto;padding:24px clamp(16px,5vw,48px) 45px}a{color:#624027}h1{font:700 clamp(2.7rem,8vw,4.6rem)/1 Georgia,serif;letter-spacing:-.055em;margin:1.8rem 0 .9rem}h2{font:700 1.55rem Georgia,serif}.inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:.9rem}section{border-radius:12px;padding:clamp(1rem,3vw,1.6rem);margin-top:1rem}.entry{background:#fffdf8;border:1px solid #d5c5b2}label{font-weight:650;font-size:.93rem}input,textarea{display:block;width:100%;margin-top:.25rem;padding:.55rem;font:inherit;border-radius:5px;border:1px solid #8f8377;background:white;color:#242736}input{min-height:44px}.answer{background:#242c3b;color:#fff9f3}.answer h2{margin:0 0 .4rem}.answer p{max-width:55ch}.answer textarea{background:#fff9ef;color:#282c36}.cta,button{display:inline-block;border-radius:5px;padding:.65rem 1rem;min-height:44px;border:1px solid #664321;color:white;background:#724329;font:650 1rem system-ui;text-decoration:none;cursor:pointer}button{margin-top:.8rem}.fine{font-size:.9rem}footer{margin-top:1.5rem}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #d48b39;outline-offset:3px}#bearings{font-feature-settings:"tnum"}[hidden]{display:none!important}
+</style></head><body><main><a href="./">← Sunset shot list</a><h1>Plan a panorama sweep.</h1><p>Set the left edge and width of the scene. Enter how much of the horizon one photo covers in your chosen camera orientation. The result gives clockwise aiming directions for a tripod at one fixed position.</p>
+<section class="entry"><div class="inputs">
+<label>Left edge bearing (0–359°)<input id="left" type="number" value="300" min="0" max="359" step="1"></label>
+<label>Scene width (1–360°)<input id="arc" type="number" value="120" min="1" max="360" step="1"></label>
+<label>One photo’s horizontal coverage (5–160°)<input id="field" type="number" value="60" min="5" max="160" step="1"></label>
+<label>Minimum angular overlap (0–90%)<input id="overlap" type="number" value="50" min="0" max="90" step="1"></label>
+</div><button id="reset" type="button">Restore example</button></section>
+<section class="answer" aria-labelledby="count"><div role="status"><h2 id="count"></h2><p id="detail"></p></div><div id="list"><label for="bearings">Camera center bearings in shooting order</label><textarea id="bearings" rows="3" readonly></textarea></div></section>
+<h2>How the spacing works</h2><p>The largest turn between photos is one frame’s angular width multiplied by the fraction you leave uncovered by the previous frame. For a partial arc, the first and last frames cover the edges and the centers are equally spaced. For 360°, the last frame overlaps the first at the same spacing.</p><p class="fine">Bearings run clockwise from north and are rounded to the nearest tenth of a degree. This is an angular plan. Lens distortion, nearby objects, camera movement and cropping can change the usable overlap when stitching.</p>
+<footer><h2>Plan the sunset viewpoint</h2><p>Asterfold helps you aim a viewpoint, plan an evening and record what you saw.</p><a class="cta" href="https://apps.apple.com/us/app/asterfold-sunset-planner/id6806044403">See Asterfold on the App Store</a><p class="fine">Browser calculator by Honest Little Apps.</p></footer>
+<script>
+const el=id=>document.getElementById(id),fields=['left','arc','field','overlap'].map(el);
+const rounded=n=>String(Math.round(n*10)/10);
+function update(){
+ if(fields.some(f=>f.value===''||!f.validity.valid||!Number.isInteger(f.valueAsNumber))){
+   el('count').textContent='Check the four inputs';el('detail').textContent='Use whole numbers within each field’s limits.';el('bearings').value='';el('list').hidden=true;return;
+ }
+ const [left,arc,field,overlap]=fields.map(f=>f.valueAsNumber);
+ const spacingUnits=field*(100-overlap);
+ let count,step=0,first;
+ if(arc===360){count=Math.ceil(36000/spacingUnits);step=360/count;first=left+field/2;}
+ else if(arc<=field){count=1;first=left+arc/2;}
+ else{count=Math.ceil((arc-field)*100/spacingUnits)+1;step=(arc-field)/(count-1);first=left+field/2;}
+ const bearings=Array.from({length:count},(_,i)=>(Math.round((first+i*step)*10)%3600)/10);
+ el('count').textContent=count+(count===1?' photo':' photos');
+ el('detail').textContent=count===1?'One frame covers the requested arc. Aim at its midpoint.':
+  'Turn '+rounded(step)+'° clockwise per frame. Angular overlap: '+rounded(100*(1-step/field))+'%.'+(arc===360?' The final turn closes the circle.':'');
+ el('bearings').value=bearings.map(value=>value+'°').join(' → ');el('list').hidden=false;
+}
+fields.forEach(f=>f.addEventListener('input',update));el('reset').onclick=()=>{fields.forEach(f=>{f.value=f.defaultValue;});update();};update();
+</script></main></body></html>
