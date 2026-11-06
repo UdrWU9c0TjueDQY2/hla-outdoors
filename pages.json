@@ -1,5 +1,21 @@
 [
  {
+  "title": "Before the light changes | Honest Little Apps",
+  "description": "A practical sunset-planning activity. Original exercises with copy and print controls.",
+  "appSlug": "portfolio",
+  "strategy": "independent-activity-collection",
+  "query": "before the light changes",
+  "tags": [
+   "original activity",
+   "printable",
+   "outdoors"
+  ],
+  "path": "/activities/practical-try-it-cards/",
+  "url": "https://udrwu9c0tjuedqy2.github.io/hla-outdoors/activities/practical-try-it-cards/",
+  "published": "2026-11-06",
+  "updated": "2026-11-06"
+ },
+ {
   "title": "Compass Bearing to Direction: Visual Degrees Practice for Sunset Planning",
   "description": "Turn a bearing in degrees into an eight-point compass direction. Explore north, east, south and west on a labelled dial before reading a sunset bearing.",
   "appSlug": "asterfold",
