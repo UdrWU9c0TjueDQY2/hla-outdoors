@@ -1,21 +1,5 @@
 [
  {
-  "title": "Three-Photo Contact Sheet Maker — Local, Free, No Signup",
-  "description": "Compare three photos, reorder a visual story, add captions and export a local JPEG contact sheet for a photo walk or camera-club exercise.",
-  "appSlug": "asterfold",
-  "strategy": "local-contact-sheet-and-club-exercise",
-  "query": "three photo contact sheet maker",
-  "tags": [
-   "photography",
-   "contact sheet",
-   "camera club"
-  ],
-  "path": "/asterfold/three-photo-contact-sheet/",
-  "url": "https://udrwu9c0tjuedqy2.github.io/hla-outdoors/asterfold/three-photo-contact-sheet/",
-  "published": "2026-11-06",
-  "updated": "2026-11-06"
- },
- {
   "title": "Compass Bearing to Direction: Visual Degrees Practice for Sunset Planning",
   "description": "Turn a bearing in degrees into an eight-point compass direction. Explore north, east, south and west on a labelled dial before reading a sunset bearing.",
   "appSlug": "asterfold",
