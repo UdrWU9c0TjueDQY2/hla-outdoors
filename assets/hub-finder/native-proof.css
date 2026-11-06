@@ -1,0 +1,15 @@
+/* Native product proof: scoped, static, no carousel or tracking. */
+.hla-native-proof{box-sizing:border-box;display:block;clear:both;margin:2rem 0;padding:clamp(1rem,3vw,2rem);border:1px solid #cad8d4;border-radius:20px;background:#f2f8f5;color:#132c29;text-align:left}
+.hla-native-proof .hla-native-label{margin:0 0 .5rem;font:700 .75rem/1.5 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#325e53}
+.hla-native-proof h2{margin:0 0 .75rem;font-size:clamp(1.45rem,3.5vw,2rem);line-height:1.2;letter-spacing:-.02em;color:#132c29}
+.hla-native-proof .hla-native-intro,.hla-native-proof .hla-native-note{max-width:70ch;margin:.65rem 0;line-height:1.6;color:#294a43}
+.hla-native-proof .hla-native-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(.75rem,3vw,1.5rem);margin:1.25rem 0 0;align-items:start}
+.hla-native-proof .hla-native-shot{min-width:0;width:auto;max-width:none;margin:0;padding:0;background:transparent;border:0;box-shadow:none;text-align:left}
+.hla-native-proof .hla-native-image-link{display:block;max-width:240px;margin:0 auto;border-radius:12px;background:#10202c;line-height:0;overflow:hidden}
+.hla-native-proof .hla-native-image-link:focus-visible{outline:3px solid #007d60;outline-offset:5px}
+.hla-native-proof .hla-native-image{display:block;width:100%;height:auto;max-width:none;max-height:none;aspect-ratio:1284/2778;object-fit:contain;margin:0;border:0;border-radius:0;box-shadow:none}
+.hla-native-proof .hla-native-caption{display:block;max-width:32ch;margin:.8rem auto 0;font:400 .95rem/1.55 system-ui,sans-serif;letter-spacing:normal;text-align:left;color:#294a43}
+.hla-native-proof .hla-native-caption strong{display:block;margin-bottom:.2rem;font-weight:700;color:#132c29}
+.hla-native-proof .hla-native-note{font-size:.85rem}
+@media(max-width:380px){.hla-native-proof{padding:.9rem}.hla-native-proof .hla-native-grid{gap:.7rem}.hla-native-proof .hla-native-caption{font-size:.875rem}}
+@media print{.hla-native-proof{display:none!important}}
