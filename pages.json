@@ -69,7 +69,7 @@
  },
  {
   "title": "Sunset Departure Planner: Work Backward from the Light",
-  "description": "Enter your sunset time, travel, setup and desired lead time to calculate when to leave, arrive and be ready. Free planning arithmetic.",
+  "description": "Enter a checked sunset time, travel and setup minutes. Calculate when to leave, then save a dated calendar plan for your photography session.",
   "appSlug": "asterfold",
   "strategy": "interactive-tool",
   "query": "when to leave for sunset planner",
@@ -81,7 +81,7 @@
   "path": "/asterfold/sunset-departure-planner/",
   "url": "https://udrwu9c0tjuedqy2.github.io/hla-outdoors/asterfold/sunset-departure-planner/",
   "published": "2026-11-04",
-  "updated": "2026-11-04"
+  "updated": "2026-11-06"
  },
  {
   "title": "Sunset Photography Shot List: Free Three-Frame Planner",
