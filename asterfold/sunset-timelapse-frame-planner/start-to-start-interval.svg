@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+<title id="title">Five seconds between starts</title><desc id="desc">A time-lapse example with a half-second exposure and five-second start-to-start interval. Frame one starts at zero seconds, frame two at five seconds, and frame three at ten seconds. A thirty-minute window fits 360 complete exposures. The last starts at 29 minutes 55 seconds and finishes at 29 minutes 55.5 seconds. An exposure starting at 30 minutes would finish outside the window.</desc>
+<rect width="1000" height="1000" rx="28" fill="#111b32"/>
+<g font-family="system-ui, sans-serif" fill="#f6f4ed">
+<text x="70" y="80" font-size="22" fill="#ffcd82" letter-spacing="3">THE TIME-LAPSE FIELD NOTE</text>
+<text x="70" y="155" font-size="49" font-weight="700">Five seconds between starts.</text>
+<text x="70" y="205" font-size="27">The exposure is part of the interval.</text>
+<rect x="60" y="250" width="880" height="300" rx="20" fill="#1f304b"/>
+<text x="90" y="300" font-size="25">0.5-second exposure · 5-second start-to-start interval</text>
+<path d="M120 400H880" stroke="#8295b1" stroke-width="3"/>
+<g fill="#82e4d5"><rect x="120" y="350" width="31.667" height="100"/><rect x="436.667" y="350" width="31.667" height="100"/><rect x="753.333" y="350" width="31.667" height="100"/></g>
+<g font-size="25"><text x="120" y="490">0 s</text><text x="436" y="490">5 s</text><text x="753" y="490">10 s</text></g>
+<path d="M120 330V315H436.667V330M436.667 330V315H753.333V330" fill="none" stroke="#ffcd82" stroke-width="3"/>
+<text x="90" y="530" font-size="21">Green blocks show exposures. Starts stay five seconds apart.</text>
+<text x="70" y="625" font-size="37" font-weight="700">The last frame must finish inside.</text>
+<text x="70" y="677" font-size="27">30 minutes · 5-second interval · 0.5-second exposure</text>
+<text x="70" y="735" font-size="30" fill="#82e4d5">Last start   29:55 → finish   29:55.5</text>
+<text x="70" y="785" font-size="27">A start at 30:00 would finish outside the window.</text>
+<text x="70" y="845" font-size="38" font-weight="700" fill="#ffcd82">360 frames ÷ 30 fps = 12 seconds</text>
+<text x="70" y="902" font-size="22">Ideal timing example. Allow for your camera’s processing.</text>
+<text x="70" y="949" font-size="21" fill="#b9c7da">HONEST LITTLE APPS · ASTERFOLD WEB COMPANION</text>
+</g></svg>
