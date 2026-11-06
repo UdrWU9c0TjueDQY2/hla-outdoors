@@ -1,0 +1,19 @@
+.hla-guide-directory [hidden]{display:none!important}
+.guide-controls{margin:22px 0;padding:20px;background:var(--card,#fffdf8);border:1px solid var(--line,#ccc);border-radius:14px}
+.guide-fields{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:16px}
+.guide-fields label{display:block;font-weight:700;margin-bottom:6px}
+.guide-fields input,.guide-fields select{box-sizing:border-box;width:100%;min-width:0;min-height:48px;padding:11px 12px;border:2px solid #6c685f;border-radius:8px;background:#fff;color:#191919;font:inherit}
+.guide-help{font-size:.92rem;color:var(--mute,#555);margin:.6rem 0}
+.guide-bottom{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:12px}
+.guide-bottom p{margin:0}.guide-bottom button{min-height:44px;padding:8px 15px;font:inherit;font-weight:700;background:#24251f;color:#fff;border:2px solid #24251f;border-radius:8px;cursor:pointer}.guide-bottom button:disabled{background:#e4e1d9;color:#666;border-color:#e4e1d9;cursor:default}
+.guide-count{font-size:.85em;font-weight:400;color:var(--mute,#555)}
+.guide-empty{padding:12px 0}.guide-empty p{margin:0}
+.hla-install-grid{list-style:none;margin:20px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:18px}
+.hla-install-card{min-width:0;padding:20px;background:var(--card,#fffdf8);border:1px solid var(--line,#d7d3c9);border-radius:16px;display:flex;flex-direction:column;align-items:flex-start}
+.hla-install-title{display:flex;gap:14px;align-items:center;margin-bottom:16px;width:100%}.hla-install-title img{width:56px;height:56px;border-radius:13px;flex:none}.hla-install-title h3{font:700 1.08rem/1.3 'Source Sans 3',system-ui,sans-serif;margin:0;overflow-wrap:anywhere}
+.hla-store-link{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:11px 18px;background:#19251d;color:#fff!important;border:2px solid #19251d;border-radius:9px;font-weight:700;text-decoration:none}.hla-store-link:hover{background:#364d3c}
+.hla-install-card .hla-scan{border-top:1px solid var(--line,#ddd);margin:18px 0 0;padding-top:14px;width:100%}.hla-scan summary{cursor:pointer;font-weight:600;min-height:44px}.hla-qr{display:block;width:196px;height:196px;max-width:100%;margin:8px auto;background:#fff;border:1px solid #d5d5d5;border-radius:4px}.hla-scan p{font-size:.93rem;line-height:1.45;margin:8px 0}
+.hla-install-note{color:var(--mute,#555);max-width:75ch}
+.guide-fields :focus-visible,.hla-install-grid :focus-visible,.guide-bottom :focus-visible{outline:3px solid #1464c8;outline-offset:4px}
+@media(max-width:620px){.guide-fields{grid-template-columns:1fr}.guide-controls{padding:15px}.hla-install-grid{grid-template-columns:1fr}.hla-store-link{width:100%}}
+@media print{.guide-controls{display:none}.hla-scan{break-inside:avoid}}
