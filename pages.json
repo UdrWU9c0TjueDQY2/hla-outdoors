@@ -16,6 +16,36 @@
   "updated": "2026-11-06"
  },
  {
+  "title": "Golden Hour Planner: Mini-Challenges with Worked Answers",
+  "description": "Choose a free challenge collection, compare answer choices and read the worked explanation. Original companion activities from Honest Little Apps.",
+  "appSlug": "resources",
+  "strategy": "challenge-collection-index",
+  "query": "golden hour planner practice questions",
+  "tags": [
+   "mini challenges"
+  ],
+  "path": "/activities/scenario-challenges/",
+  "url": "https://udrwu9c0tjuedqy2.github.io/hla-outdoors/activities/scenario-challenges/",
+  "published": "2026-11-06",
+  "updated": "2026-11-06"
+ },
+ {
+  "title": "27 Photo Planning and Composition Challenges",
+  "description": "Choose purposeful frames, coherent photo sequences and practical outing plans in fictional photography scenarios.",
+  "appSlug": "asterfold",
+  "strategy": "worked-scenario-quiz",
+  "query": "photography composition quiz",
+  "tags": [
+   "worked examples",
+   "mini challenges",
+   "asterfold"
+  ],
+  "path": "/asterfold/scenario-challenges/",
+  "url": "https://udrwu9c0tjuedqy2.github.io/hla-outdoors/asterfold/scenario-challenges/",
+  "published": "2026-11-06",
+  "updated": "2026-11-06"
+ },
+ {
   "title": "Compass Bearing to Direction: Visual Degrees Practice for Sunset Planning",
   "description": "Turn a bearing in degrees into an eight-point compass direction. Explore north, east, south and west on a labelled dial before reading a sunset bearing.",
   "appSlug": "asterfold",
